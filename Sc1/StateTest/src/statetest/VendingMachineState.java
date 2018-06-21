@@ -6,5 +6,5 @@ package statetest;
  */
 public interface VendingMachineState {
     void InsertCoin(int amount);
-    void GetSoftDrinks();
+    void GetSoftDrinks(int amount);
 }

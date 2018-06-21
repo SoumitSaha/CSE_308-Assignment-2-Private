@@ -23,7 +23,8 @@ public class ObserverTest {
         System.out.println("CR created.");
         
         while(true){
-            System.out.println("1.Add/Subscribe     2.Remove/unsubscribe    3.Update and Notify");
+            System.out.println("1.Add/Subscribe\t\t2.Remove/unsubscribe");
+            System.out.println("3.Update and Notify\t4.See all Subscriber(s)");
             int ch;
             ch = in.nextInt();
             if(ch == 1){
@@ -33,6 +34,7 @@ public class ObserverTest {
                 Student std = new Student(cr,msg);
                 students.add(std);
             }
+            
             else if(ch == 2){
                 System.out.println("ID : ");
                 int id = in.nextInt();
@@ -44,22 +46,30 @@ public class ObserverTest {
                     if(st.ID == id){
                         delstd = st;
                         found = true;
-                        System.out.println("Student with ID : " + delstd.ID + " unsubscribed.");
                         students.remove(delstd);
+                        cr.unsubscribe(id);
                         break;
                     }
                 }
                 if(!found){
                     System.out.println("No stdent by ID : " + id);
                 }
-                cr.unsubscribe(id);
             }
+            
             else if(ch == 3){
                 System.out.println("New Info from Dept : ");
                 Scanner inp = new Scanner(System.in);
                 String msg = inp.nextLine();
                 cr.getNewInfofromDept(msg);
             }
+            
+            else if(ch == 4){
+                for (Iterator<Student> it = students.iterator(); it.hasNext();) {
+                    Student st = it.next();
+                    System.out.println("Name : " + st.StdName + ", ID : " + st.ID);
+                }
+            }
+            
             else{
                 break;
             }

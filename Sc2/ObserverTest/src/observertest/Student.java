@@ -18,7 +18,7 @@ public class Student{
         this.StdName = name;
         this.ID = ++IDtracker;
         cr.subscribe(this);
-        System.out.println("Student ID : " + this.ID + " has been subscribed.");
+        System.out.println("Student Name : " + this.StdName + " ID : " + this.ID + " has been subscribed.");
     }
 
     public void update(String newInfo) {
@@ -27,7 +27,7 @@ public class Student{
     }
     
     public void PrintMsgfromCR(){
-        System.out.println("Department has updated some information.");
+        System.out.println("Hello " + StdName + ", Department has updated some information.");
         System.out.println("\tNew information :");
         System.out.println(Info);
         System.out.println("- from CR");
